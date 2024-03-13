@@ -19,7 +19,7 @@ export class CoffeeService {
       .pipe(catchError(() => of([])));
   }
 
-  public getCoffee(id): Observable<Coffee> {
+  public getCoffee(id: number): Observable<Coffee | null> {
     return this.getCoffees().pipe(map((coffees) => {
       if (id) {
         return coffees.filter((coffee) => coffee.id === id)[0];

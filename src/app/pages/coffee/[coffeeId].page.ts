@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import {AsyncPipe, CurrencyPipe, NgIf} from '@angular/common';
 import { injectActivatedRoute } from '@analogjs/router';
-import { Observable} from 'rxjs';
+import {EMPTY, Observable} from 'rxjs';
 
 import {Coffee} from "../../models/coffee";
 import {CoffeeService} from "../../coffee.service";
@@ -27,8 +27,7 @@ import {CoffeeService} from "../../coffee.service";
 export default class CoffeeDetailsComponent implements OnInit {
   private route = injectActivatedRoute();
   private coffeeService = inject(CoffeeService);
-  public coffee$: Observable<Coffee>;
-
+  public coffee$: Observable<Coffee | null> = EMPTY;
 
   ngOnInit() {
     const routeParams = this.route.parent!.snapshot!.paramMap;
