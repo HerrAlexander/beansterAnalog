@@ -1,20 +1,18 @@
 import { Component } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
+// @ts-ignore
+import NavComponent from './components/nav.component';
 
 @Component({
-  selector: 'app-root',
+  selector: 'app-home',
   standalone: true,
-  imports: [RouterOutlet],
-  template: ` <router-outlet></router-outlet> `,
-  styles: [
-    `
-      :host {
-        max-width: 1280px;
-        margin: 0 auto;
-        padding: 2rem;
-        text-align: center;
-      }
-    `,
-  ],
+  imports: [RouterOutlet, NavComponent],
+  template: `
+    <div style="display: flex; flex-direction: column; height: 100%; margin-left: 200px;">
+      <app-nav></app-nav>
+      <div class="container">
+        <router-outlet></router-outlet>
+      </div>
+    </div>  `,
 })
 export class AppComponent {}
